@@ -4,7 +4,6 @@
 using namespace std;
 
 //The indicies are not being assigned correctly. 
-//I believe the problem to begin on line 56.
 //8/28/2019
 
 int modPow(int base, int exp, int mod) {
