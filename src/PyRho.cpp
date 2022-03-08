@@ -63,19 +63,12 @@ int main(int argc, char ** argv) {
 	}
 
 	int mod = atoi(argv[1]);
-	vector<int> primRoots;
 	
-	cout << "Primitive Roots Modulo " << mod << ": [";
+	cout << "Primitive Roots Modulo " << mod << endl;
 	for (int i = 1; i < mod; i++) {
 		if (isPrimRoot(i, mod)) {
-			primRoots.push_back(i);
-			cout << " " << i;
+            printChart(i, mod);
 		}
-	}
-	cout << " ]" << endl;
-	
-	for (const int& pr : primRoots) {
-		printChart(pr, mod);
 	}
 
 	return 0;
