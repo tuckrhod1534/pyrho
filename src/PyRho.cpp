@@ -54,7 +54,7 @@ void printChart(int PR, int mod) {
 	}
 }
 
-int main(int argc, char ** argv) {
+int main(int argc, char *argv[]) {
 	if (argc != 2) {
 		cout << "invalid usage" << endl;
 		return 1;
