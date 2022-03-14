@@ -1,10 +1,10 @@
 #include <iostream>
 #include <math.h>
 #include <cmath>
+#include <numeric>
 using namespace std;
 
-//The indicies are not being assigned correctly. 
-//I believe the problem to begin on line 56.
+//The indicies are not being assigned correctly.
 //8/28/2019
 
 int modPow(int base, int exp, int mod) {
@@ -16,29 +16,18 @@ int modPow(int base, int exp, int mod) {
 	return a;
 }
 
-int GCD(int a, int b) {
-	int gcd;
-	for (int i = 1; i <= a && i <= b; i++) {
-		if (a % i == 0 && b % i == 0) {
-			gcd = i;
-		}
-	}
-	return gcd;
-}
-
 int ePhi(int a) {
 	int counter = 0;
 	for (int i = a - 1; i >= 1; i--) {
 		if (a % 2 == 0 && i % 2 == 0) {
 			i--;
 		}
-		if (GCD(a, i) == 1) {
+		if (gcd(a, i) == 1) {
 			counter++;
 		}
 	}
 	return counter;
 }
-
 
 bool isPrimRoot(int a, int mod) {
 	int test = ePhi(mod);
@@ -65,36 +54,20 @@ void printChart(int PR, int mod) {
 	}
 }
 
+int main(int argc, char * argv[]) {
+	if (argc == 2) {
+		int mod = atoi(argv[1]);
 
-
-int main() {
-
-	char answer = 'y';
-	int mod;
-	int PR[10000];
-	while (answer == 'y') {
-		int counter = 0;
-		cout << "Enter your modulus: " << endl;
-		cin >> mod;
-		cout << endl;
-		cout << endl;
-		cout << "Primitive Roots Modulo " << mod << ":" << endl;
+		cout << "Index charts for Primitive Roots Modulo " << mod << ":" << endl;
 		for (int i = 1; i < mod; i++) {
 			if (isPrimRoot(i, mod)) {
-				PR[counter] = i;
-				cout << i << endl;
-				counter++;
+				printChart(i, mod);
 			}
 		}
-		cout << endl;
-		cout << endl;
-		for (int j = 0; j < counter; j++) {
-			printChart(PR[j], mod);
-		}
-		cout << "Would you like another chart?" << endl;
-
-		cin >> answer;
+		
+		
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
